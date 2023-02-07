@@ -191,7 +191,7 @@ drm.service.enabled=true
 ro.netflix.bsp_rev=MTK6897-37606-1
 
 # Encryption
-ro.crypto.volume.filenames_mode=aes-256-cts
+ro.crypto.volume.options=aes-256-xts:aes-256-hctr2
 
 # Fingerprint
 persist.vendor.sys.fp.expolevel=0x88
