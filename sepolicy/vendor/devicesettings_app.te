@@ -9,3 +9,5 @@ allow devicesettings_app sysfs_power_supply:dir search;
 allow devicesettings_app sysfs_power_supply:file { write setattr };
 allow devicesettings_app self:netlink_kobject_uevent_socket { bind create read setopt };
 allow devicesettings_app sysfs_power_supply:file { write setattr };
+allow devicesettings_app sysfs_therm:file { write };
+allow devicesettings_app sysfs_therm:file { getattr open read };
