@@ -121,6 +121,10 @@ on boot
     chown system system /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate
     chmod 0664 /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate
 
+    # Touch
+    chown system system /sys/devices/platform/goodix_ts.0/switch_report_rate
+    chmod 0664 /sys/devices/platform/goodix_ts.0/switch_report_rate
+
 # charger
 on boot && property:ro.product.device=duchamp && property:ro.boot.hwc=GL
     setprop persist.vendor.accelerate.charge false

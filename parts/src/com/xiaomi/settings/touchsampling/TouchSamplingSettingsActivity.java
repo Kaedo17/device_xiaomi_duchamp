@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.xiaomi.settings.touchsampling;
+
 import android.os.Bundle;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 public class TouchSamplingSettingsActivity extends CollapsingToolbarBaseActivity {

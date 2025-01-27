@@ -24,7 +24,8 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
-
+import com.xiaomi.settings.R;
+import com.xiaomi.settings.touchsampling.TouchSamplingUtils;
 import com.xiaomi.settings.utils.FileUtils;
 
 public class TouchSamplingService extends Service {
@@ -46,6 +47,26 @@ public class TouchSamplingService extends Service {
 
         // Apply the touch sampling rate initially
         applyTouchSamplingRateFromPreferences();
+
+        // Register a broadcast receiver for screen unlock and screen on events
+        mScreenUnlockReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (Intent.ACTION_USER_PRESENT.equals(intent.getAction()) ||
+                    Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
+                    Log.d(TAG, "Screen turned on or device unlocked. Reapplying touch sampling rate.");
+                    applyTouchSamplingRate();
+                }
+            }
+        };
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_USER_PRESENT); // Triggered when the user unlocks the device
+        filter.addAction(Intent.ACTION_SCREEN_ON);    // Triggered when the screen turns on
+        registerReceiver(mScreenUnlockReceiver, filter);
+
+        // Apply the touch sampling rate initially
+        applyTouchSamplingRate();
     }
 
     @Override
@@ -67,6 +88,7 @@ public class TouchSamplingService extends Service {
         SharedPreferences sharedPref = getSharedPreferences(
                 TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
         sharedPref.unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
+
     }
 
     @Override
@@ -74,6 +96,7 @@ public class TouchSamplingService extends Service {
         return null;
     }
 
+<<<<<<< HEAD
     /**
      * Registers a BroadcastReceiver to handle screen unlock and screen on events.
      */
@@ -130,6 +153,11 @@ public class TouchSamplingService extends Service {
      * @param state 1 to enable high touch sampling rate, 0 to disable it.
      */
     private void applyTouchSamplingRate(int state) {
+        SharedPreferences sharedPref = getSharedPreferences(
+                TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
+        boolean htsrEnabled = sharedPref.getBoolean(TouchSamplingSettingsFragment.HTSR_STATE, false);
+        int state = htsrEnabled ? 1 : 0;
+
         String currentState = FileUtils.readOneLine(TouchSamplingUtils.HTSR_FILE);
         if (currentState == null || !currentState.equals(Integer.toString(state))) {
             Log.d(TAG, "Applying touch sampling rate: " + state);

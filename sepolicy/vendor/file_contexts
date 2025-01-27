@@ -121,3 +121,4 @@
 
 # Touch Polling
 /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate                                                   u:object_r:sysfs_htsr:s0
+

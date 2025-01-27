@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.xiaomi.settings.touchsampling;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -31,7 +32,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 public final class TouchSamplingUtils {
     private static final String TAG = "TouchSamplingUtils";
+    
     public static final String HTSR_FILE = "/sys/devices/platform/goodix_ts.0/goodix_ts_report_rate";
+
     public static void restoreSamplingValue(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences(
                 TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
