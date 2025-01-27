@@ -15,7 +15,11 @@ import android.os.UserHandle;
 import android.util.Log;
 import android.view.Display;
 import android.view.Display.HdrCapabilities;
+import android.content.IntentFilter;
+import android.os.UserHandle;
 import com.xiaomi.settings.display.ColorModeService;
+import com.xiaomi.settings.touchsampling.TouchSamplingUtils;
+import com.xiaomi.settings.touchsampling.TouchSamplingService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = "XiaomiParts";
@@ -33,10 +37,15 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         context.startServiceAsUser(new Intent(context, ColorModeService.class),
                 UserHandle.CURRENT);
 
+
         // Override HDR types to enable Dolby Vision
         final DisplayManager displayManager = context.getSystemService(DisplayManager.class);
         displayManager.overrideHdrTypes(Display.DEFAULT_DISPLAY,
                 new int[] {HdrCapabilities.HDR_TYPE_DOLBY_VISION, HdrCapabilities.HDR_TYPE_HDR10,
                         HdrCapabilities.HDR_TYPE_HLG, HdrCapabilities.HDR_TYPE_HDR10_PLUS});
+
+       // Start Touch Sampling Service
+        context.startServiceAsUser(new Intent(context, TouchSamplingService.class), UserHandle.CURRENT);
+
     }
 }
