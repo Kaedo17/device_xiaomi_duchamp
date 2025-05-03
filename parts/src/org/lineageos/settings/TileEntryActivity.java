@@ -26,12 +26,10 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import org.lineageos.settings.refreshrate.RefreshActivity;
 import org.lineageos.settings.thermal.ThermalSettingsActivity;
 
 public class TileEntryActivity extends Activity {
     private static final String TAG = "TileEntryActivity";
-    private static final String REFRESH_TILE = "org.lineageos.settings.refreshrate.RefreshTileService";
     private static final String THERMAL_TILE = "org.lineageos.settings.thermal.ThermalTileService";
 
     @Override
@@ -47,9 +45,7 @@ public class TileEntryActivity extends Activity {
         String sourceClassName = sourceComponent.getClassName();
         Intent intent = null;
 
-        if (REFRESH_TILE.equals(sourceClassName)) {
-            intent = new Intent(this, RefreshActivity.class);
-        } else if (THERMAL_TILE.equals(sourceClassName)) {
+        if (THERMAL_TILE.equals(sourceClassName)) {
             intent = new Intent(this, ThermalSettingsActivity.class);
         } else {
             Log.e(TAG, "Unknown tile: " + sourceClassName);
