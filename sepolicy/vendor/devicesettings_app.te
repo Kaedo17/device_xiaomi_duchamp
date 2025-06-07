@@ -1,1 +1,5 @@
 allow devicesettings_app sysfs_therm:dir search;
+
+# Core Control
+allow devicesettings_app vendor_sysfs_corecontrol:dir search;
+allow devicesettings_app vendor_sysfs_corecontrol:file { getattr open read write };
