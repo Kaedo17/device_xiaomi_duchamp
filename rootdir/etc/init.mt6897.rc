@@ -853,23 +853,6 @@ on boot
     chown root radio /proc/net/netfilter/nfnetlink_log
     chown root radio /proc/net/netfilter/nfnetlink_queue
 
-    # Allow Core Control
-    chown system system /sys/devices/system/cpu/cpu0/online
-    chown system system /sys/devices/system/cpu/cpu1/online
-    chown system system /sys/devices/system/cpu/cpu2/online
-    chown system system /sys/devices/system/cpu/cpu3/online
-    chown system system /sys/devices/system/cpu/cpu4/online
-    chown system system /sys/devices/system/cpu/cpu5/online
-    chown system system /sys/devices/system/cpu/cpu6/online
-    chown system system /sys/devices/system/cpu/cpu7/online
-    chmod 0660 /sys/devices/system/cpu/cpu0/online
-    chmod 0660 /sys/devices/system/cpu/cpu1/online
-    chmod 0660 /sys/devices/system/cpu/cpu2/online
-    chmod 0660 /sys/devices/system/cpu/cpu3/online
-    chmod 0660 /sys/devices/system/cpu/cpu4/online
-    chmod 0660 /sys/devices/system/cpu/cpu5/online
-    chmod 0660 /sys/devices/system/cpu/cpu6/online
-    chmod 0660 /sys/devices/system/cpu/cpu7/online
 
     # WMT proc
     chown shell system /proc/driver/wmt_dbg
@@ -940,3 +923,27 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     socket audio_hw_socket seqpacket 0666 system system
     onrestart restart audioserver
 
+# TMP
+on property:sys.boot_completed=1
+    exec_background -- /system/bin/settings put system min_refresh_rate 60
+    # Charge Bypass
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0660 /sys/class/power_supply/battery/input_suspend
+
+# Allow Core Control
+    chown system system /sys/devices/system/cpu/cpu0/online
+    chown system system /sys/devices/system/cpu/cpu1/online
+    chown system system /sys/devices/system/cpu/cpu2/online
+    chown system system /sys/devices/system/cpu/cpu3/online
+    chown system system /sys/devices/system/cpu/cpu4/online
+    chown system system /sys/devices/system/cpu/cpu5/online
+    chown system system /sys/devices/system/cpu/cpu6/online
+    chown system system /sys/devices/system/cpu/cpu7/online
+    chmod 0660 /sys/devices/system/cpu/cpu0/online
+    chmod 0660 /sys/devices/system/cpu/cpu1/online
+    chmod 0660 /sys/devices/system/cpu/cpu2/online
+    chmod 0660 /sys/devices/system/cpu/cpu3/online
+    chmod 0660 /sys/devices/system/cpu/cpu4/online
+    chmod 0660 /sys/devices/system/cpu/cpu5/online
+    chmod 0660 /sys/devices/system/cpu/cpu6/online
+    chmod 0660 /sys/devices/system/cpu/cpu7/online
