@@ -28,3 +28,20 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildFingerprint=POCO/duchamp_global/duchamp:14/UP1A.230905.011/OS2.0.1.0.VNLMIXM:user/release-keys \
     DeviceProduct=$(PRODUCT_SYSTEM_NAME)
 
+# YAAP stuff's
+TARGET_BOARD_PLATFORM := mt6897
+TARGET_ENABLE_BLUR := true
+
+# EVOX Stuff
+
+# Build Type
+EVO_BUILD_TYPE := Unofficial
+
+# GAPPS
+WITH_GMS := true
+
+# Under Display FP
+TARGET_HAS_UDFPS := true
+
+# Accord
+TARGET_INCLUDE_ACCORD := false
