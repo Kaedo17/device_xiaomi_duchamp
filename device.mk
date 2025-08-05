@@ -16,7 +16,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # IMS
-$(call inherit-product, vendor/mediatek/ims/ims.mk)
+# $(call inherit-product, vendor/mediatek/ims/ims.mk)
 
 # Dolby
 $(call inherit-product, hardware/dolby/dolby.mk)
