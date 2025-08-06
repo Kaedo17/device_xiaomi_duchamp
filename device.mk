@@ -30,6 +30,11 @@ else
     PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.compression.threads=true
 endif
 
+# Evo-X Overlay
+PRODUCT_PACKAGES += \
+    SettingsEvoDuchamp \
+    UpdaterEvoDuchamp
+
 PRODUCT_PACKAGES += \
     com.android.hardware.boot \
     android.hardware.boot-service.default_recovery

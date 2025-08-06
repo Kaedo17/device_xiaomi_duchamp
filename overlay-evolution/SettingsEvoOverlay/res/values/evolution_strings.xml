@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2019-2024 The Evolution X Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Android version screen, build maintainer -->
+    <string name="build_maintainer_summary" translatable="false">Kemji</string>
+    <string name="build_maintainer_donate_url" translatable="false">https://ko-fi.com/kemjipsu</string>
+
+    <!-- Color Strings -->
+    <string name="display_engine_mode_footer_text">Due to hardware incompatibilities, the Reality Display Engine system is disabled on Poco X6 Pro / Redmi K70E (duchamp) devices.</string>
+</resources>
