@@ -19,7 +19,7 @@ import com.xiaomi.settings.display.ColorModeService;
 import com.xiaomi.settings.turbocharging.TurboChargingService;
 import com.xiaomi.settings.refreshrate.RefreshUtils;
 import com.xiaomi.settings.touchsampling.TouchSamplingUtils;
-import com.xiaomi.settings.doze.PocketService;
+//import com.xiaomi.settings.doze.PocketService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = "XiaomiParts";
@@ -41,7 +41,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         RefreshUtils.startService(context);
 
         // Start Pocket Mode Service
-        PocketService.startService(context);
+       // PocketService.startService(context);
 
         // Start HTSR
         TouchSamplingUtils.restoreSamplingValue(context);
