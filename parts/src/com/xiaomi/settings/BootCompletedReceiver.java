@@ -17,6 +17,9 @@ import android.view.Display;
 import android.view.Display.HdrCapabilities;
 import com.xiaomi.settings.display.ColorModeService;
 import com.xiaomi.settings.turbocharging.TurboChargingService;
+import com.xiaomi.settings.refreshrate.RefreshUtils;
+import com.xiaomi.settings.touchsampling.TouchSamplingUtils;
+import com.xiaomi.settings.doze.PocketService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = "XiaomiParts";
@@ -33,6 +36,15 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         // Start TurboChargingService
         Intent turboChargingIntent = new Intent(context, TurboChargingService.class);
         context.startService(turboChargingIntent);
+
+        // Start Refresh Rate Service
+        RefreshUtils.startService(context);
+
+        // Start Pocket Mode Service
+        PocketService.startService(context);
+
+        // Start HTSR
+        TouchSamplingUtils.restoreSamplingValue(context);
 
         // Display
         context.startServiceAsUser(new Intent(context, ColorModeService.class),
