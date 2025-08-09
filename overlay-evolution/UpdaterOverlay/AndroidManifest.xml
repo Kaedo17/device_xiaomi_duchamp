@@ -7,5 +7,5 @@
     package="org.evolution.updater.overlay.duchamp">
     <overlay android:targetPackage="org.evolution.updater"
                    android:isStatic="true"
-                   android:priority="700"/>
+                   android:priority="999"/>
 </manifest>
