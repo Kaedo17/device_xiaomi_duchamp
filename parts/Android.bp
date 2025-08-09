@@ -16,7 +16,7 @@ android_app {
     system_ext_specific: true,
     static_libs: [
         "androidx.core_core",
-        "com.xiaomi.settings.resources",
+        "org.lineageos.settings.resources",
         "vendor.xiaomi.hardware.displayfeature_aidl-V2-java",
     ],
     required: [
