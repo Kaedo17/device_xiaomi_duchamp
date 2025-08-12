@@ -225,10 +225,6 @@ PRODUCT_PACKAGES += \
    LineageSDKOverlayDuchamp \
    LineageSettingsOverlayDuchamp
 
-PRODUCT_PACKAGES += \
-    SettingsEvoDuchamp \
-    UpdaterEvoDuchamp
-
 # Parts
 PRODUCT_PACKAGES += \
     XiaomiParts
