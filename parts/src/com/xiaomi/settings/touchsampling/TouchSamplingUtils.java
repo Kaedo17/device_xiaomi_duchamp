@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xiaomi.settings.touchsampling;
+
+package org.lineageos.settings.touchsampling;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,16 +24,20 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 import androidx.preference.PreferenceManager;
-import com.xiaomi.settings.utils.FileUtils;
+
+import org.lineageos.settings.utils.FileUtils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
+
 public final class TouchSamplingUtils {
     private static final String TAG = "TouchSamplingUtils";
-    public static final String HTSR_FILE = "/sys/devices/platform/goodix_ts.0/goodix_ts_report_rate";
+    public static final String HTSR_FILE = "/sys/devices/platform/goodix_ts.0/switch_report_rate";
+
     public static void restoreSamplingValue(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences(
                 TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);

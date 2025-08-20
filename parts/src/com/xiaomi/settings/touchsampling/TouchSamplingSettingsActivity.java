@@ -14,15 +14,20 @@
  * limitations under the License.
  */
 
-package com.xiaomi.settings.touchsampling;
+package org.lineageos.settings.touchsampling;
 
 import android.os.Bundle;
+
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+
 public class TouchSamplingSettingsActivity extends CollapsingToolbarBaseActivity {
+
     private static final String TAG_HTSR = "touchsampling";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getFragmentManager().beginTransaction().replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
                 new TouchSamplingSettingsFragment(), TAG_HTSR).commit();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 The LineageOS Project
+ * Copyright (C) 2025 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,10 @@
 
 package org.lineageos.settings.touchsampling;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -31,6 +35,17 @@ import org.lineageos.settings.utils.FileUtils;
 public class TouchSamplingTileService extends TileService {
 
     private static final String TAG = "TouchSamplingTileService";
+    private static final String NOTIFICATION_CHANNEL_ID = "touch_sampling_tile_service_channel";
+    private static final int NOTIFICATION_ID = 3;
+
+    private NotificationManager mNotificationManager;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        setupNotificationChannel();
+    }
 
     @Override
     public void onTileAdded() {
@@ -81,8 +96,10 @@ public class TouchSamplingTileService extends TileService {
         Intent serviceIntent = new Intent(this, TouchSamplingService.class);
         if (newState) {
             startService(serviceIntent);
+            showTouchSamplingNotification();
         } else {
             stopService(serviceIntent);
+            cancelTouchSamplingNotification();
         }
 
         // Update the state in the file
@@ -107,6 +124,36 @@ public class TouchSamplingTileService extends TileService {
         }
     }
 
+    private void setupNotificationChannel() {
+        NotificationChannel channel = new NotificationChannel(
+                NOTIFICATION_CHANNEL_ID,
+                getString(R.string.touch_sampling_mode_title),
+                NotificationManager.IMPORTANCE_DEFAULT
+        );
+        channel.setBlockable(true);
+        mNotificationManager.createNotificationChannel(channel);
+    }
+
+    private void showTouchSamplingNotification() {
+        Intent intent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        Notification notification = new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
+                .setContentTitle(getString(R.string.touch_sampling_mode_title))
+                .setContentText(getString(R.string.touch_sampling_mode_notification))
+                .setSmallIcon(R.drawable.ic_touch_sampling_tile)
+                .setContentIntent(pendingIntent)
+                .setOngoing(true)
+                .setFlag(Notification.FLAG_NO_CLEAR, true)
+                .build();
+
+        mNotificationManager.notify(NOTIFICATION_ID, notification);
+    }
+
+    private void cancelTouchSamplingNotification() {
+        mNotificationManager.cancel(NOTIFICATION_ID);
+    }
+
     /**
      * Receiver to handle boot completion and reinitialize the tile state.
      */
@@ -128,4 +175,3 @@ public class TouchSamplingTileService extends TileService {
         }
     }
 }
-

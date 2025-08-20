@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xiaomi.settings.turbocharging;
+package org.lineageos.settings.turbocharging;
 
 import android.app.Service;
 import android.content.Intent;
@@ -113,3 +113,4 @@ public class TurboChargingService extends Service {
         prefs.unregisterOnSharedPreferenceChangeListener(preferenceChangeListener);
     }
 }
+

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 The LineageOS Project
+ * Copyright (C) 2025 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xiaomi.settings.touchsampling;
+package org.lineageos.settings.touchsampling;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -25,39 +25,27 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.xiaomi.settings.R;
-import com.xiaomi.settings.touchsampling.TouchSamplingUtils;
-import com.xiaomi.settings.utils.FileUtils;
+import org.lineageos.settings.utils.FileUtils;
 
 public class TouchSamplingService extends Service {
     private static final String TAG = "TouchSamplingService";
 
     private BroadcastReceiver mScreenUnlockReceiver;
+    private SharedPreferences.OnSharedPreferenceChangeListener mPreferenceChangeListener;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "TouchSamplingService started");
 
-        // Register a broadcast receiver for screen unlock and screen on events
-        mScreenUnlockReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (Intent.ACTION_USER_PRESENT.equals(intent.getAction()) ||
-                    Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
-                    Log.d(TAG, "Screen turned on or device unlocked. Reapplying touch sampling rate.");
-                    applyTouchSamplingRate();
-                }
-            }
-        };
+        // Initialize and register the broadcast receiver
+        registerScreenUnlockReceiver();
 
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_USER_PRESENT); // Triggered when the user unlocks the device
-        filter.addAction(Intent.ACTION_SCREEN_ON);    // Triggered when the screen turns on
-        registerReceiver(mScreenUnlockReceiver, filter);
+        // Initialize and register the SharedPreferences listener
+        registerPreferenceChangeListener();
 
         // Apply the touch sampling rate initially
-        applyTouchSamplingRate();
+        applyTouchSamplingRateFromPreferences();
     }
 
     @Override
@@ -74,6 +62,11 @@ public class TouchSamplingService extends Service {
         if (mScreenUnlockReceiver != null) {
             unregisterReceiver(mScreenUnlockReceiver);
         }
+
+        // Unregister the SharedPreferences change listener
+        SharedPreferences sharedPref = getSharedPreferences(
+                TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
+        sharedPref.unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
     }
 
     @Override
@@ -81,12 +74,62 @@ public class TouchSamplingService extends Service {
         return null;
     }
 
-    private void applyTouchSamplingRate() {
+    /**
+     * Registers a BroadcastReceiver to handle screen unlock and screen on events.
+     */
+    private void registerScreenUnlockReceiver() {
+        mScreenUnlockReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (Intent.ACTION_USER_PRESENT.equals(intent.getAction()) ||
+                        Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
+                    Log.d(TAG, "Screen turned on or device unlocked. Reapplying touch sampling rate.");
+                    applyTouchSamplingRateFromPreferences();
+                }
+            }
+        };
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_USER_PRESENT);
+        filter.addAction(Intent.ACTION_SCREEN_ON);
+        registerReceiver(mScreenUnlockReceiver, filter);
+    }
+
+    /**
+     * Registers a SharedPreferences.OnSharedPreferenceChangeListener to monitor
+     * changes in the touch sampling rate setting.
+     */
+    private void registerPreferenceChangeListener() {
+        SharedPreferences sharedPref = getSharedPreferences(
+                TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
+
+        mPreferenceChangeListener = (sharedPreferences, key) -> {
+            if (TouchSamplingSettingsFragment.HTSR_STATE.equals(key)) {
+                Log.d(TAG, "Preference changed. Reapplying touch sampling rate.");
+                boolean htsrEnabled = sharedPreferences.getBoolean(key, false);
+                applyTouchSamplingRate(htsrEnabled ? 1 : 0);
+            }
+        };
+
+        sharedPref.registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
+    }
+
+    /**
+     * Reads the touch sampling rate preference and applies the appropriate state.
+     */
+    private void applyTouchSamplingRateFromPreferences() {
         SharedPreferences sharedPref = getSharedPreferences(
                 TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
         boolean htsrEnabled = sharedPref.getBoolean(TouchSamplingSettingsFragment.HTSR_STATE, false);
-        int state = htsrEnabled ? 1 : 0;
+        applyTouchSamplingRate(htsrEnabled ? 1 : 0);
+    }
 
+    /**
+     * Applies the given touch sampling rate state directly to the hardware file.
+     *
+     * @param state 1 to enable high touch sampling rate, 0 to disable it.
+     */
+    private void applyTouchSamplingRate(int state) {
         String currentState = FileUtils.readOneLine(TouchSamplingUtils.HTSR_FILE);
         if (currentState == null || !currentState.equals(Integer.toString(state))) {
             Log.d(TAG, "Applying touch sampling rate: " + state);
