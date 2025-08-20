@@ -1,2 +1,1 @@
-type sysfs_htsr, sysfs_type, fs_type;
 type vendor_perf_service, service_manager_type;
