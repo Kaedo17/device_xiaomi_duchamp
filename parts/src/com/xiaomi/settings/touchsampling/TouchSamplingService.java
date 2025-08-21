@@ -48,18 +48,6 @@ public class TouchSamplingService extends Service {
         // Apply the touch sampling rate initially
         applyTouchSamplingRateFromPreferences();
 
-        // Register a broadcast receiver for screen unlock and screen on events
-        mScreenUnlockReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (Intent.ACTION_USER_PRESENT.equals(intent.getAction()) ||
-                    Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
-                    Log.d(TAG, "Screen turned on or device unlocked. Reapplying touch sampling rate.");
-                    applyTouchSamplingRate();
-                }
-            }
-        };
-
         // Initialize and register the SharedPreferences listener
         registerPreferenceChangeListener();
 
@@ -86,10 +74,6 @@ public class TouchSamplingService extends Service {
         SharedPreferences sharedPref = getSharedPreferences(
                 TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
         sharedPref.unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
-<<<<<<< HEAD
-
-=======
->>>>>>> e7d48dd (duchamp: parts: Fixup High Touch Sampling Rate (HTSR) service logic)
     }
 
     @Override
@@ -97,11 +81,7 @@ public class TouchSamplingService extends Service {
         return null;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> e7d48dd (duchamp: parts: Fixup High Touch Sampling Rate (HTSR) service logic)
-    /**
+     /**
      * Registers a BroadcastReceiver to handle screen unlock and screen on events.
      */
     private void registerScreenUnlockReceiver() {
@@ -145,21 +125,6 @@ public class TouchSamplingService extends Service {
      * Reads the touch sampling rate preference and applies the appropriate state.
      */
     private void applyTouchSamplingRateFromPreferences() {
-<<<<<<< HEAD
-        SharedPreferences sharedPref = getSharedPreferences(
-                TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
-        boolean htsrEnabled = sharedPref.getBoolean(TouchSamplingSettingsFragment.HTSR_STATE, false);
-        applyTouchSamplingRate(htsrEnabled ? 1 : 0);
-    }
-
-    /**
-     * Applies the given touch sampling rate state directly to the hardware file.
-     *
-     * @param state 1 to enable high touch sampling rate, 0 to disable it.
-     */
-    private void applyTouchSamplingRate(int state) {
-=======
->>>>>>> e7d48dd (duchamp: parts: Fixup High Touch Sampling Rate (HTSR) service logic)
         SharedPreferences sharedPref = getSharedPreferences(
                 TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
         boolean htsrEnabled = sharedPref.getBoolean(TouchSamplingSettingsFragment.HTSR_STATE, false);
