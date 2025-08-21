@@ -65,27 +65,10 @@
                 android:resource="@string/clear_speaker_summary" />
         </activity>
 
-        <!-- Core Control -->
         <service
             android:name=".display.ColorModeService"
             android:permission="ColorModeService">
         </service>
-
-        <activity
-            android:name=".corecontrol.CoreControlActivity"
-            android:label="@string/core_control_title"
-            android:exported="true"
-            android:theme="@style/Theme.SubSettingsBase.NoActionBar">
-            <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
-            </intent-filter>
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.battery" />
-            <meta-data
-                android:name="com.android.settings.summary"
-                android:resource="@string/core_control_summary" />
-        </activity>
 
         <!-- Turbo Charging -->
         <activity
