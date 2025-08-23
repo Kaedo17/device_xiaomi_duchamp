@@ -921,3 +921,16 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     task_profiles ProcessCapacityHigh HighPerformance
     socket audio_hw_socket seqpacket 0666 system system
     onrestart restart audioserver
+
+# Hide Magisk
+on property:sys.boot_completed=1
+    # Restrict permissions to socket file
+    # to hide Magisk & co.
+    chmod 440 /proc/net/unix
+
+# DT2W
+    chmod 0660 /sys/devices/platform/goodix_ts.0/goodix_ts_double_tap
+    chown system system /sys/devices/platform/goodix_ts.0/goodix_ts_double_tap
+    
+on property:persist.sys.duchamp.dt2w=*
+    write /sys/devices/platform/goodix_ts.0/goodix_ts_double_tap ${persist.sys.duchamp.dt2w}
