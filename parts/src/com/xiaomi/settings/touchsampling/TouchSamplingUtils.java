@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.settings.touchsampling;
+package com.xiaomi.settings.touchsampling;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,7 +22,7 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 import androidx.preference.PreferenceManager;
-import org.lineageos.settings.utils.FileUtils;
+import com.xiaomi.settings.utils.FileUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
