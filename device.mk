@@ -15,6 +15,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
+# V4A
+$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
+
 #keys
 -include vendor/lineage-priv/keys/keys.mk
 
