@@ -14,9 +14,12 @@ $(call inherit-product, device/xiaomi/duchamp/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# DERPFEST
-DERPFEST_BUILD_TYPE := Unofficial
-DERPFEST_BUILD_VARIANT := Stable
+# EVOX Stuff
+EVO_BUILD_TYPE := Unofficial
+WITH_GMS := false
+TARGET_HAS_UDFPS := true
+TARGET_INCLUDE_ACCORD := false
+TARGET_INCLUDE_VIPERFX := true
 
 PRODUCT_NAME := lineage_duchamp
 PRODUCT_DEVICE := duchamp

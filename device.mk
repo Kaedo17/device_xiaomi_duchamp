@@ -15,9 +15,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
-# V4A
-$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
-
 #keys
 -include vendor/lineage-priv/keys/keys.mk
 
@@ -386,9 +383,9 @@ PRODUCT_PACKAGES += \
     libwifi-hal-wrapper \
     wpa_supplicant
 
-# Derp Overlays
+# Evox Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-derp
+    $(LOCAL_PATH)/overlay-evolution
 
 # Inherit the proprietary files
 $(call inherit-product-if-exists, device/xiaomi/duchamp-miuicamera/device.mk)
