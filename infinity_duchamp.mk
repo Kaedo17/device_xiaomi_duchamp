@@ -11,12 +11,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from device makefile.
 $(call inherit-product, device/xiaomi/duchamp/device.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common InfinityX stuff.
+$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
-# DERPFEST
-DERPFEST_BUILD_TYPE := Unofficial
-DERPFEST_BUILD_VARIANT := Stable
+# Infinity X Stuff
+INFINITY_BUILD_TYPE := UNOFFICIAL
+INFINITY_MAINTAINER := "Kemji"
+WITH_GAPPS := true
 
 PRODUCT_NAME := lineage_duchamp
 PRODUCT_DEVICE := duchamp
