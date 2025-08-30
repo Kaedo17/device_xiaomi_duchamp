@@ -31,4 +31,4 @@ allow vendor_hal_displayfeature_default vendor_displayfeature_sysfs:file w_file_
 set_prop(vendor_hal_displayfeature_default, vendor_displayfeature_prop)
 
 # htsr fix
-allow devicesettings_app vendor_hal_displayfeature_default:binder { call transfer };
+allow parts_app vendor_hal_displayfeature_default:binder { call transfer };
