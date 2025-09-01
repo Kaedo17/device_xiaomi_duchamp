@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.settings;
+package com.xiaomi.settings;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -28,10 +28,10 @@ import android.os.ServiceManager;
 import android.util.Log;
 import androidx.preference.PreferenceManager;
 
-import org.lineageos.settings.Constants;
-import org.lineageos.settings.saturation.SaturationFragment;
-import org.lineageos.settings.utils.ComponentUtils;
-import org.lineageos.settings.utils.FileUtils;
+import com.xiaomi.settings.Constants;
+import com.xiaomi.settings.saturation.SaturationFragment;
+import com.xiaomi.settings.utils.ComponentUtils;
+import com.xiaomi.settings.utils.FileUtils;
 
 public class Startup extends BroadcastReceiver {
 

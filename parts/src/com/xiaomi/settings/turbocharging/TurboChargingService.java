@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.turbocharging;
+package com.xiaomi.settings.turbocharging;
 
 import android.app.Service;
 import android.content.Intent;

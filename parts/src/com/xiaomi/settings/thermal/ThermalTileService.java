@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.thermal;
+package com.xiaomi.settings.thermal;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -26,8 +26,8 @@ import android.view.View;
 
 import androidx.preference.PreferenceManager;
 
-import org.lineageos.settings.R;
-import org.lineageos.settings.utils.FileUtils;
+import com.xiaomi.settings.R;
+import com.xiaomi.settings.utils.FileUtils;
 
 public class ThermalTileService extends TileService {
     private static final String TAG = "ThermalTileService";

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.corecontrol;
+package com.xiaomi.settings.corecontrol;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +23,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
-import org.lineageos.settings.R;
+import com.xiaomi.settings.R;
 
 import java.io.File;
 

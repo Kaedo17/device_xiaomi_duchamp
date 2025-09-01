@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.touchsampling;
+package com.xiaomi.settings.touchsampling;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -28,9 +28,9 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
-import org.lineageos.settings.R;
-import org.lineageos.settings.touchsampling.TouchSamplingUtils;
-import org.lineageos.settings.utils.FileUtils;
+import com.xiaomi.settings.R;
+import com.xiaomi.settings.touchsampling.TouchSamplingUtils;
+import com.xiaomi.settings.utils.FileUtils;
 
 public class TouchSamplingTileService extends TileService {
 

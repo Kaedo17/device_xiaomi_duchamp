@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.turbocharging;
+package com.xiaomi.settings.turbocharging;
 
 import android.os.Bundle;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;

@@ -24,7 +24,7 @@
         android:layout="@layout/image_preview_layout"
         android:selectable="false" />
 
-    <org.lineageos.settings.CustomSeekBarPreference
+    <com.xiaomi.settings.CustomSeekBarPreference
         android:key="saturation"
         android:max="200"
         android:min="0"

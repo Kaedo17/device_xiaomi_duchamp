@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.saturation
+package com.xiaomi.settings.saturation
 
 import android.content.Context
 import android.os.Bundle
@@ -34,10 +34,10 @@ import androidx.preference.PreferenceManager
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.android.settingslib.widget.LayoutPreference
-import org.lineageos.settings.Constants
-import org.lineageos.settings.CustomSeekBarPreference
-import org.lineageos.settings.R
-import org.lineageos.settings.utils.TileUtils
+import com.xiaomi.settings.Constants
+import com.xiaomi.settings.CustomSeekBarPreference
+import com.xiaomi.settings.R
+import com.xiaomi.settings.utils.TileUtils
 
 class SaturationFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChangeListener {
 

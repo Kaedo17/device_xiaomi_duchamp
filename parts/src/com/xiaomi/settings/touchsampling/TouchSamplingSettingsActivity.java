@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.touchsampling;
+package com.xiaomi.settings.touchsampling;
 
 import android.os.Bundle;
 

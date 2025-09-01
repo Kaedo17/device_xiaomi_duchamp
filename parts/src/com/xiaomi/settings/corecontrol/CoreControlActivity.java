@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.corecontrol;
+package com.xiaomi.settings.corecontrol;
 
 import android.os.Bundle;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;

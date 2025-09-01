@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.touchsampling;
+package com.xiaomi.settings.touchsampling;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -25,7 +25,7 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 
-import org.lineageos.settings.utils.FileUtils;
+import com.xiaomi.settings.utils.FileUtils;
 
 public class TouchSamplingService extends Service {
     private static final String TAG = "TouchSamplingService";

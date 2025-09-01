@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings;
+package com.xiaomi.settings;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -26,15 +26,15 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import org.lineageos.settings.thermal.ThermalSettingsActivity;
-import org.lineageos.settings.saturation.SaturationActivity;
-import org.lineageos.settings.touchsampling.TouchSamplingSettingsActivity;
+import com.xiaomi.settings.thermal.ThermalSettingsActivity;
+import com.xiaomi.settings.saturation.SaturationActivity;
+import com.xiaomi.settings.touchsampling.TouchSamplingSettingsActivity;
 
 public class TileEntryActivity extends Activity {
     private static final String TAG = "TileEntryActivity";
-    private static final String THERMAL_TILE = "org.lineageos.settings.thermal.ThermalTileService";
-    private static final String SATURATION_TILE = "org.lineageos.settings.saturation.SaturationTileService";
-    private static final String HTSR_TILE = "org.lineageos.settings.touchsampling.TouchSamplingTileService";
+    private static final String THERMAL_TILE = "com.xiaomi.settings.thermal.ThermalTileService";
+    private static final String SATURATION_TILE = "com.xiaomi.settings.saturation.SaturationTileService";
+    private static final String HTSR_TILE = "com.xiaomi.settings.touchsampling.TouchSamplingTileService";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

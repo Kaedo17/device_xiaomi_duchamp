@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.saturation
+package com.xiaomi.settings.saturation
 
 import android.app.PendingIntent
 import android.content.Intent

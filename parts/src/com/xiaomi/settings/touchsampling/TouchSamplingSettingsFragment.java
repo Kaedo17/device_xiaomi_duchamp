@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.touchsampling;
+package com.xiaomi.settings.touchsampling;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -29,9 +29,9 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
-import org.lineageos.settings.R;
-import org.lineageos.settings.touchsampling.TouchSamplingUtils;
-import org.lineageos.settings.utils.FileUtils;
+import com.xiaomi.settings.R;
+import com.xiaomi.settings.touchsampling.TouchSamplingUtils;
+import com.xiaomi.settings.utils.FileUtils;
 
 public class TouchSamplingSettingsFragment extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {

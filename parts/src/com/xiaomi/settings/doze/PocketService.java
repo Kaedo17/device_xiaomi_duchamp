@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.lineageos.settings.doze;
+package com.xiaomi.settings.doze;
 
 import android.app.KeyguardManager;
 import android.app.Service;

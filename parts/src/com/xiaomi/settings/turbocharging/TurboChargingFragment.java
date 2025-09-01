@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.turbocharging;
+package com.xiaomi.settings.turbocharging;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -31,7 +31,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.lineageos.settings.R;
+import com.xiaomi.settings.R;
 
 public class TurboChargingFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
 

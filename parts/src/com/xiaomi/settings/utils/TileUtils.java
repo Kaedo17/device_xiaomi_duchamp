@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.utils;
+package com.xiaomi.settings.utils;
 
 import android.app.StatusBarManager;
 import android.content.ComponentName;
@@ -22,7 +22,7 @@ import android.content.Context;
 import android.graphics.drawable.Icon;
 import android.widget.Toast;
 
-import org.lineageos.settings.R;
+import com.xiaomi.settings.R;
 
 public class TileUtils {
 

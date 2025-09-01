@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.speaker;
+package com.xiaomi.settings.speaker;
 
 import android.os.Bundle;
 
