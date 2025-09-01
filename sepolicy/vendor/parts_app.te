@@ -8,3 +8,6 @@ allow parts_app sysfs_power_supply:file { write setattr };
 allow parts_app sysfs_therm:file { write };
 allow parts_app sysfs_therm:file { getattr open read };
 
+allow parts_app vendor_hal_displayfeature_service:service_manager find;
+
+allow parts_app vendor_sysfs_htsr:file { read write open getattr };

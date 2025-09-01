@@ -34,8 +34,6 @@ allow parts_app {
 allow parts_app system_app_data_file:dir create_dir_perms;
 allow parts_app system_app_data_file:{ file lnk_file } create_file_perms;
 
-# Allow XiaomiParts to read/write to sysfs_htsr;
-allow parts_app sysfs_htsr:file rw_file_perms;
 
 # Allow binder communication with gpuservice
 binder_call(parts_app, gpuservice)
@@ -51,7 +49,5 @@ allow parts_app {
 # Allow XiaomiParts to get settingsdebug.instant.packages prop
 get_prop(parts_app, settingslib_prop)
 
-# Allow XiaomiParts to read/write to sysfs_htsr;
-allow parts_app sysfs_htsr:file rw_file_perms;
 allow parts_app sysfs_thermal:dir r_dir_perms;
 allow parts_app sysfs_thermal:file rw_file_perms;
