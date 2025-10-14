@@ -14,9 +14,6 @@ $(call inherit-product, device/xiaomi/duchamp/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# DERPFEST
-DERPFEST_BUILD_TYPE := Unofficial
-DERPFEST_BUILD_VARIANT := Stable
 
 PRODUCT_NAME := lineage_duchamp
 PRODUCT_DEVICE := duchamp
@@ -31,3 +28,9 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildFingerprint=POCO/duchamp_global/duchamp:14/UP1A.230905.011/OS2.0.205.0.VNLMIXM:user/release-keys \
     DeviceProduct=$(PRODUCT_SYSTEM_NAME)
 
+#Mist Stuff
+MISTOS_MAINTAINER := "Kemji"
+WITH_GMS :=	true
+TARGET_ENABLE_BLUR := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
