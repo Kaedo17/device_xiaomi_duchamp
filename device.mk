@@ -384,8 +384,8 @@ PRODUCT_PACKAGES += \
     wpa_supplicant
 
 # Derp Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-derp
+#DEVICE_PACKAGE_OVERLAYS += \
+#    $(LOCAL_PATH)/overlay-derp
 
 # Inherit the proprietary files
 #$(call inherit-product-if-exists, device/xiaomi/duchamp-miuicamera/device.mk)
