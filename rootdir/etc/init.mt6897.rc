@@ -350,3 +350,9 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
 # Set thermal profile to 'Default' on boot
 on post-fs-data
     write /sys/class/thermal/thermal_message/sconfig 0
+# High touch sampling rate nodes
+on property:persist.vendor.touch_sensitivity_mode=0 && property:sys.boot_completed=1
+    write /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate 0
+
+on property:persist.vendor.touch_sensitivity_mode=1 && property:sys.boot_completed=1
+    write /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate 1
